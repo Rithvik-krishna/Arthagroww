@@ -209,14 +209,13 @@ export default function Hero() {
               }}
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
             >
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full bg-slate-900">
                 <Image
-                  src="/assets/app-screens.png"
+                  src="/assets/screen-explore.png"
                   alt="Tracks screen"
                   fill
                   sizes="200px"
                   className="object-cover object-top"
-                  style={{ objectPosition: "66.6% 0%" }}
                 />
               </div>
             </motion.div>
@@ -230,14 +229,13 @@ export default function Hero() {
               }}
               transition={{ type: "spring", stiffness: 90, damping: 15 }}
             >
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full bg-slate-900">
                 <Image
-                  src="/assets/app-screens.png"
+                  src="/assets/screen-quiz.png"
                   alt="Quiz screen"
                   fill
                   sizes="210px"
                   className="object-cover object-top"
-                  style={{ objectPosition: "55.5% 0%" }}
                 />
               </div>
             </motion.div>
@@ -264,21 +262,15 @@ export default function Hero() {
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 h-1.5 w-28 bg-white/40 rounded-full z-40" />
 
               {/* Screen */}
-              <div className="relative w-full h-full bg-[#F7F7F7] overflow-hidden">
-                <motion.div
-                  animate={{ y: [0, -1000, 0] }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative w-full h-[2400px]"
-                >
-                  <Image
-                    src="/assets/app-screens.png"
-                    alt="Main App View"
-                    fill
-                    sizes="270px"
-                    className="object-cover object-top p-1"
-                    priority
-                  />
-                </motion.div>
+              <div className="relative w-full h-full bg-slate-900 overflow-hidden">
+                <Image
+                  src="/assets/screen-dashboard.png"
+                  alt="Main App View"
+                  fill
+                  sizes="270px"
+                  className="object-cover object-top p-1"
+                  priority
+                />
               </div>
 
             </motion.div>
