@@ -12,7 +12,7 @@ const SCREENS = [
     name: "Dashboard",
     tagline: "Hey Arjun! Ready to grow today?",
     desc: "Your learning command center. Get personalized daily picks, resume active courses, and check your streak multiplier at a single glance.",
-    pos: "22.2%", // Cropping Home Dashboard Final V2
+    imageSrc: "/assets/screen-dashboard.png",
     color: "from-brand-blue/20 to-brand-green/20",
     glow: "shadow-glow-blue",
   },
@@ -21,7 +21,7 @@ const SCREENS = [
     name: "Quiz Screen",
     tagline: "What is the primary benefit of a 'Dark Store'?",
     desc: "Interactive, bite-sized gamified quizzes. Get instant color-coded feedback, learn with explanations, and earn coins for correct streaks.",
-    pos: "55.5%", // Cropping Quiz Screen Final V2
+    imageSrc: "/assets/screen-quiz.png",
     color: "from-brand-yellow/20 to-brand-coral/20",
     glow: "shadow-glow-yellow",
   },
@@ -30,7 +30,7 @@ const SCREENS = [
     name: "Learning Tracks",
     tagline: "Choose Your Path 🚀",
     desc: "Explore a catalog of structured courses ranging from Wealth Foundation, Stock Market, Crypto, Web3, to AI & Prompt Engineering.",
-    pos: "66.6%", // Cropping Learning Tracks Final
+    imageSrc: "/assets/screen-explore.png",
     color: "from-brand-blue/20 to-indigo-500/20",
     glow: "shadow-glow-blue",
   },
@@ -39,7 +39,7 @@ const SCREENS = [
     name: "Leaderboard",
     tagline: "Weekly Champions League",
     desc: "Compete with global learners. Climb from Bronze to Diamond league. Track rankings, XP points, and badges weekly.",
-    pos: "77.7%", // Cropping Leaderboard Final
+    imageSrc: "/assets/screen-profile.png",
     color: "from-brand-green/20 to-brand-yellow/20",
     glow: "shadow-glow-green",
   },
@@ -48,7 +48,7 @@ const SCREENS = [
     name: "User Profile",
     tagline: "Arjun Rivera - Level 8",
     desc: "Show off your achievements, total lessons, and daily streak counts. Keep track of unlocked achievements and badges.",
-    pos: "100%", // Cropping User Profile Final
+    imageSrc: "/assets/screen-profile.png",
     color: "from-brand-blue/20 to-brand-coral/20",
     glow: "shadow-glow-blue",
   },
@@ -57,7 +57,7 @@ const SCREENS = [
     name: "Pro Upgrade",
     tagline: "Unlock ArthaGroww Pro 👑",
     desc: "Deep portfolio analytics, advanced trading simulations, 1-on-1 AI mentor support, and access to premium investor circles.",
-    pos: "88.8%", // Cropping Pro Upgrade Final
+    imageSrc: "/assets/screen-explore.png",
     color: "from-brand-dark-blue/40 to-zinc-950/40",
     glow: "shadow-glow-coral",
   },
@@ -189,14 +189,13 @@ export default function AppShowcase() {
                   transform: "rotateY(-30deg) rotateX(10deg) translate3d(-140px, -20px, -100px)"
                 }}
               >
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full bg-slate-900">
                   <Image
-                    src="/assets/app-screens.png"
+                    src="/assets/screen-quiz.png"
                     alt="Left Phone Screen"
                     fill
                     sizes="180px"
                     className="object-cover object-top"
-                    style={{ objectPosition: "0% 0%" }} // Splash Screen
                   />
                 </div>
               </motion.div>
@@ -229,12 +228,11 @@ export default function AppShowcase() {
                       className="relative w-full h-full"
                     >
                       <Image
-                        src="/assets/app-screens.png"
+                        src={activeScreen.imageSrc || "/assets/screen-dashboard.png"}
                         alt={activeScreen.name}
                         fill
                         sizes="260px"
                         className="object-cover object-top"
-                        style={{ objectPosition: `${activeScreen.pos} 0%` }}
                         priority
                       />
                     </motion.div>
@@ -252,16 +250,56 @@ export default function AppShowcase() {
                   transform: "rotateY(-5deg) rotateX(10deg) translate3d(140px, 40px, -50px)"
                 }}
               >
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full bg-slate-900">
                   <Image
-                    src="/assets/app-screens.png"
+                    src="/assets/screen-explore.png"
                     alt="Right Phone Screen"
                     fill
                     sizes="190px"
                     className="object-cover object-top"
-                    style={{ objectPosition: "88.8% 0%" }} // Pro Upgrade
                   />
                 </div>
+              </motion.div>
+
+              {/* Floating Badges inspired by user screenshots */}
+              {/* Streak Badge */}
+              <motion.div
+                className="absolute left-[-50px] md:left-[-120px] top-[80px] z-30 flex items-center gap-1.5 px-3.5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] pointer-events-none"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="text-sm">🔥</span>
+                <span className="text-[10px] font-black text-brand-coral uppercase tracking-wider">7 Day Streak!</span>
+              </motion.div>
+
+              {/* XP Badge */}
+              <motion.div
+                className="absolute left-[-40px] md:left-[-110px] bottom-[120px] z-30 flex items-center gap-1.5 px-3.5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] pointer-events-none"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="text-sm">🪙</span>
+                <span className="text-[10px] font-black text-brand-yellow-dark dark:text-brand-yellow uppercase tracking-wider">+1,200 XP</span>
+              </motion.div>
+
+              {/* Leaderboard Badge */}
+              <motion.div
+                className="absolute right-[-50px] md:right-[-120px] top-[140px] z-30 flex items-center gap-1.5 px-3.5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] pointer-events-none"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="text-sm">🏆</span>
+                <span className="text-[10px] font-black text-brand-yellow-dark dark:text-brand-yellow uppercase tracking-wider">Leaderboard #1</span>
+              </motion.div>
+
+              {/* Investing Badge */}
+              <motion.div
+                className="absolute right-[-40px] md:right-[-110px] bottom-[170px] z-30 flex items-center gap-1.5 px-3.5 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] pointer-events-none"
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="text-sm">📈</span>
+                <span className="text-[10px] font-black text-brand-blue uppercase tracking-wider">Investing: 85%</span>
               </motion.div>
 
             </div>
